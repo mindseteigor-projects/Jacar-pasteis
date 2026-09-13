@@ -1,12 +1,14 @@
 // ===============================
-// PASTELARIA DEMO
+// IG SITES - PASTELARIA DEMO
 // Produtos + imagens + carrinho
 // ===============================
 
-// Coloque aqui o seu número de WhatsApp.
-// Formato: código do país + DDD + número
-// Exemplo: 5541999999999
-const WHATSAPP_NUMBER = '';
+
+// ===============================
+// WHATSAPP DA IG SITES
+// ===============================
+
+const WHATSAPP_NUMBER = '5541995229213';
 
 
 // ===============================
@@ -123,10 +125,6 @@ const products = [
 // GERADOR DE IMAGENS
 // ===============================
 
-// As imagens são criadas localmente.
-// Não dependem de arquivos externos.
-// Isso funciona normalmente na Vercel.
-
 function createImage(emoji, name) {
 
     const svg = `
@@ -136,26 +134,36 @@ function createImage(emoji, name) {
          viewBox="0 0 600 420">
 
         <defs>
-            <linearGradient id="bg"
+
+            <linearGradient
+                id="bg"
                 x1="0"
                 y1="0"
                 x2="1"
-                y2="1">
+                y2="1"
+            >
 
-                <stop offset="0%"
-                    stop-color="#fff4d6"/>
+                <stop
+                    offset="0%"
+                    stop-color="#fff4d6"
+                />
 
-                <stop offset="100%"
-                    stop-color="#f3c56b"/>
+                <stop
+                    offset="100%"
+                    stop-color="#f3c56b"
+                />
 
             </linearGradient>
+
         </defs>
+
 
         <rect
             width="600"
             height="420"
             fill="url(#bg)"
         />
+
 
         <circle
             cx="300"
@@ -164,6 +172,7 @@ function createImage(emoji, name) {
             fill="#ffffff"
             opacity=".45"
         />
+
 
         <text
             x="300"
@@ -174,6 +183,7 @@ function createImage(emoji, name) {
             ${emoji}
         </text>
 
+
         <rect
             x="28"
             y="335"
@@ -183,6 +193,7 @@ function createImage(emoji, name) {
             fill="#211d19"
             opacity=".9"
         />
+
 
         <text
             x="300"
@@ -199,13 +210,15 @@ function createImage(emoji, name) {
     </svg>
     `;
 
+
     return 'data:image/svg+xml;charset=UTF-8,' +
         encodeURIComponent(svg);
+
 }
 
 
 // ===============================
-// CRIAR IMAGENS DOS PRODUTOS
+// CRIAR IMAGENS
 // ===============================
 
 const img = products.map(product => {
@@ -232,10 +245,13 @@ let cat = 'all';
 
 function money(value) {
 
-    return value.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-    });
+    return value.toLocaleString(
+        'pt-BR',
+        {
+            style: 'currency',
+            currency: 'BRL'
+        }
+    );
 
 }
 
@@ -248,6 +264,7 @@ function render() {
 
     const searchInput =
         document.getElementById('search');
+
 
     const q = searchInput
         ? searchInput.value.toLowerCase()
@@ -289,12 +306,15 @@ function render() {
     if (!list.length) {
 
         grid.innerHTML = `
-            <div style="
-                grid-column:1/-1;
-                text-align:center;
-                padding:40px;
-                color:#777;
-            ">
+
+            <div
+                style="
+                    grid-column:1/-1;
+                    text-align:center;
+                    padding:40px;
+                    color:#777;
+                "
+            >
 
                 <div style="font-size:40px;">
                     🔎
@@ -309,53 +329,62 @@ function render() {
                 </p>
 
             </div>
+
         `;
 
         return;
     }
 
 
-    grid.innerHTML = list.map(item => {
+    grid.innerHTML = list
+        .map(item => {
 
-        const p = item.product;
-        const i = item.index;
+            const p = item.product;
+            const i = item.index;
 
 
-        return `
-            <article class="card">
+            return `
 
-                <img
-                    src="${img[i]}"
-                    alt="${p[1]}"
-                >
+                <article class="card">
 
-                <div class="card-body">
-
-                    <h3>
-                        ${p[1]}
-                    </h3>
-
-                    <div class="desc">
-                        ${p[2]}
-                    </div>
-
-                    <div class="price">
-                        ${money(p[3])}
-                    </div>
-
-                    <button
-                        class="add"
-                        onclick="add(${i})"
+                    <img
+                        src="${img[i]}"
+                        alt="${p[1]}"
                     >
-                        + Adicionar
-                    </button>
 
-                </div>
 
-            </article>
-        `;
+                    <div class="card-body">
 
-    }).join('');
+                        <h3>
+                            ${p[1]}
+                        </h3>
+
+
+                        <div class="desc">
+                            ${p[2]}
+                        </div>
+
+
+                        <div class="price">
+                            ${money(p[3])}
+                        </div>
+
+
+                        <button
+                            class="add"
+                            onclick="add(${i})"
+                        >
+                            + Adicionar
+                        </button>
+
+                    </div>
+
+                </article>
+
+            `;
+
+        })
+        .join('');
 
 }
 
@@ -366,9 +395,13 @@ function render() {
 
 function add(index) {
 
-    cart.push(products[index]);
+    cart.push(
+        products[index]
+    );
+
 
     updateCart();
+
 
     document
         .getElementById('cart')
@@ -387,47 +420,58 @@ function updateCart() {
     const count =
         document.getElementById('count');
 
+
     const cartItems =
         document.getElementById('cartItems');
+
 
     const total =
         document.getElementById('total');
 
 
-    count.textContent = cart.length;
+    count.textContent =
+        cart.length;
 
 
     if (!cart.length) {
 
         cartItems.innerHTML = `
-            <div style="
-                color:#777;
-                font-size:13px;
-            ">
+
+            <div
+                style="
+                    color:#777;
+                    font-size:13px;
+                "
+            >
                 Seu carrinho está vazio.
             </div>
+
         `;
 
     } else {
 
         cartItems.innerHTML =
-            cart.map((product, index) => {
+            cart
+                .map(product => {
 
-                return `
-                    <div class="cart-row">
+                    return `
 
-                        <span>
-                            ${product[1]}
-                        </span>
+                        <div class="cart-row">
 
-                        <b>
-                            ${money(product[3])}
-                        </b>
+                            <span>
+                                ${product[1]}
+                            </span>
 
-                    </div>
-                `;
+                            <b>
+                                ${money(product[3])}
+                            </b>
 
-            }).join('');
+                        </div>
+
+                    `;
+
+                })
+                .join('');
 
     }
 
@@ -464,7 +508,10 @@ function toggleCart() {
 // FILTRO DE CATEGORIA
 // ===============================
 
-function filterCat(category, button) {
+function filterCat(
+    category,
+    button
+) {
 
     cat = category;
 
@@ -473,12 +520,16 @@ function filterCat(category, button) {
         .querySelectorAll('.tabs button')
         .forEach(btn => {
 
-            btn.classList.remove('active');
+            btn.classList.remove(
+                'active'
+            );
 
         });
 
 
-    button.classList.add('active');
+    button.classList.add(
+        'active'
+    );
 
 
     render();
@@ -487,40 +538,45 @@ function filterCat(category, button) {
 
 
 // ===============================
-// FINALIZAR PEDIDO
+// FINALIZAR / FALAR COM IG SITES
 // ===============================
 
 function checkout() {
 
     if (!cart.length) {
 
-        alert(
-            'Adicione pelo menos um produto ao carrinho.'
+        const message =
+            `Olá! Vi o site demonstrativo da IG Sites e gostaria de saber mais sobre a criação de um site para minha empresa.
+
+IG Sites
+UM SITE COM A CARA DO SEU NEGÓCIO`;
+
+
+        const whatsapp =
+            'https://wa.me/' +
+            WHATSAPP_NUMBER +
+            '?text=' +
+            encodeURIComponent(message);
+
+
+        window.open(
+            whatsapp,
+            '_blank'
         );
 
-        return;
-    }
-
-
-    // Se nenhum WhatsApp foi configurado,
-    // o site continua funcionando como demonstração.
-
-    if (!WHATSAPP_NUMBER) {
-
-        alert(
-            'Este é um site demonstrativo. Configure o número de WhatsApp no arquivo script.js.'
-        );
 
         return;
     }
 
 
     const items =
-        cart.map(product => {
+        cart
+            .map(product => {
 
-            return `• ${product[1]} — ${money(product[3])}`;
+                return `• ${product[1]} — ${money(product[3])}`;
 
-        }).join('\n');
+            })
+            .join('\n');
 
 
     const total =
@@ -532,11 +588,16 @@ function checkout() {
 
 
     const message =
-        `Olá! Quero fazer um pedido:
+        `Olá! Vi o site demonstrativo da IG Sites e gostaria de saber mais sobre a criação de um site para minha empresa.
+
+Produtos selecionados no exemplo:
 
 ${items}
 
-Total: ${money(total)}`;
+Total demonstrativo: ${money(total)}
+
+IG Sites
+UM SITE COM A CARA DO SEU NEGÓCIO`;
 
 
     const whatsapp =
