@@ -1,11 +1,22 @@
 // ===============================
-// PASTELARIA JACARÉ
+// PASTELARIA DEMO
 // Produtos + imagens + carrinho
+// ===============================
+
+// Coloque aqui o seu número de WhatsApp.
+// Formato: código do país + DDD + número
+// Exemplo: 5541999999999
+const WHATSAPP_NUMBER = '';
+
+
+// ===============================
+// PRODUTOS
 // ===============================
 
 const products = [
 
     // PASTÉIS
+
     ['pastel', 'Pastel de Carne',
         'Carne temperada, cebola e azeitona.', 12.9, '🥩'],
 
@@ -38,7 +49,8 @@ const products = [
 
 
     // LANCHES
-    ['lanche', 'X-Burger Jacaré',
+
+    ['lanche', 'X-Burger',
         'Hambúrguer, queijo, alface, tomate e molho especial.', 18.9, '🍔'],
 
     ['lanche', 'X-Salada',
@@ -55,6 +67,7 @@ const products = [
 
 
     // PORÇÕES
+
     ['porcao', 'Batata Frita P',
         'Batata crocante com molho especial.', 15.9, '🍟'],
 
@@ -72,6 +85,7 @@ const products = [
 
 
     // BEBIDAS
+
     ['bebida', 'Coca-Cola Lata 350ml',
         'Refrigerante gelado.', 6.0, '🥤'],
 
@@ -101,12 +115,14 @@ const products = [
 
     ['bebida', 'Chá Gelado 300ml',
         'Chá gelado com limão.', 7.5, '🧊']
+
 ];
 
 
 // ===============================
 // GERADOR DE IMAGENS
 // ===============================
+
 // As imagens são criadas localmente.
 // Não dependem de arquivos externos.
 // Isso funciona normalmente na Vercel.
@@ -188,9 +204,17 @@ function createImage(emoji, name) {
 }
 
 
-// Cria uma imagem para cada produto
+// ===============================
+// CRIAR IMAGENS DOS PRODUTOS
+// ===============================
+
 const img = products.map(product => {
-    return createImage(product[4], product[1]);
+
+    return createImage(
+        product[4],
+        product[1]
+    );
+
 });
 
 
@@ -212,6 +236,7 @@ function money(value) {
         style: 'currency',
         currency: 'BRL'
     });
+
 }
 
 
@@ -228,16 +253,19 @@ function render() {
         ? searchInput.value.toLowerCase()
         : '';
 
+
     const list = products
         .map((product, index) => ({
             product,
             index
         }))
+
         .filter(item => {
 
             const categoryOK =
                 cat === 'all' ||
                 item.product[0] === cat;
+
 
             const searchOK =
                 item.product[1]
@@ -248,7 +276,9 @@ function render() {
                     .toLowerCase()
                     .includes(q);
 
+
             return categoryOK && searchOK;
+
         });
 
 
@@ -265,6 +295,7 @@ function render() {
                 padding:40px;
                 color:#777;
             ">
+
                 <div style="font-size:40px;">
                     🔎
                 </div>
@@ -276,6 +307,7 @@ function render() {
                 <p>
                     Tente buscar outro produto.
                 </p>
+
             </div>
         `;
 
@@ -287,6 +319,7 @@ function render() {
 
         const p = item.product;
         const i = item.index;
+
 
         return `
             <article class="card">
@@ -323,6 +356,7 @@ function render() {
         `;
 
     }).join('');
+
 }
 
 
@@ -340,6 +374,7 @@ function add(index) {
         .getElementById('cart')
         .classList
         .add('show');
+
 }
 
 
@@ -393,6 +428,7 @@ function updateCart() {
                 `;
 
             }).join('');
+
     }
 
 
@@ -406,6 +442,7 @@ function updateCart() {
 
     total.textContent =
         money(totalValue);
+
 }
 
 
@@ -419,6 +456,7 @@ function toggleCart() {
         .getElementById('cart')
         .classList
         .toggle('show');
+
 }
 
 
@@ -444,6 +482,7 @@ function filterCat(category, button) {
 
 
     render();
+
 }
 
 
@@ -457,6 +496,19 @@ function checkout() {
 
         alert(
             'Adicione pelo menos um produto ao carrinho.'
+        );
+
+        return;
+    }
+
+
+    // Se nenhum WhatsApp foi configurado,
+    // o site continua funcionando como demonstração.
+
+    if (!WHATSAPP_NUMBER) {
+
+        alert(
+            'Este é um site demonstrativo. Configure o número de WhatsApp no arquivo script.js.'
         );
 
         return;
@@ -480,7 +532,7 @@ function checkout() {
 
 
     const message =
-        `Olá! Quero fazer um pedido na Pastelaria Jacaré Linha Verde:
+        `Olá! Quero fazer um pedido:
 
 ${items}
 
@@ -488,7 +540,9 @@ Total: ${money(total)}`;
 
 
     const whatsapp =
-        'https://wa.me/5541984547718?text=' +
+        'https://wa.me/' +
+        WHATSAPP_NUMBER +
+        '?text=' +
         encodeURIComponent(message);
 
 
@@ -496,6 +550,7 @@ Total: ${money(total)}`;
         whatsapp,
         '_blank'
     );
+
 }
 
 
@@ -505,6 +560,7 @@ Total: ${money(total)}`;
 
 const search =
     document.getElementById('search');
+
 
 if (search) {
 
