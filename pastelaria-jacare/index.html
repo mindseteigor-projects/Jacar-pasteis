@@ -1,38 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>Pastelaria Jacaré Linha Verde — Cardápio</title>
+    <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>Pastelaria Demo — Cardápio</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
+
 <div class="top"></div>
 
+
 <nav class="nav container">
+
     <div class="logo">
-        Pastelaria <span>Jacaré</span>
+        Pastelaria <span>Demo</span>
     </div>
+
 
     <div class="nav-right">
-        <span class="badge">📍 Pinheirinho</span>
-        <span>🛒 <b id="count">0</b></span>
+
+        <span class="badge">
+            📍 Curitiba
+        </span>
+
+        <span>
+            🛒 <b id="count">0</b>
+        </span>
+
     </div>
+
 </nav>
 
+
+
 <header class="hero">
+
     <div class="container hero-grid">
 
+
         <div>
+
             <div class="eyebrow">
                 Pastelaria brasileira • Curitiba
             </div>
 
-            <h1>Pastelaria Jacaré Linha Verde</h1>
+
+            <h1>
+                Pastelaria Demo
+            </h1>
+
 
             <p>
                 Pastéis crocantes, porções caprichadas,
@@ -40,38 +72,73 @@
                 Peça pelo WhatsApp.
             </p>
 
+
             <div class="info">
-                <span>⭐ 4,9 (118 avaliações)</span>
-                <span>🕐 11h às 21h30</span>
-                <span>🚚 Delivery</span>
+
+                <span>
+                    ⭐ 4,9 (118 avaliações)
+                </span>
+
+                <span>
+                    🕐 11h às 21h30
+                </span>
+
+                <span>
+                    🚚 Delivery
+                </span>
+
             </div>
+
         </div>
+
+
 
         <div class="hero-card">
+
             <div class="rating">
-                <span class="stars">★★★★★</span> 4,9
+
+                <span class="stars">
+                    ★★★★★
+                </span>
+
+                4,9
+
             </div>
+
 
             <small>
-                118 avaliações • Rua Ipiranga, 960 — Loja 36
+                118 avaliações • Curitiba — PR
             </small>
 
-            <div style="margin-top:14px;font-size:13px">
+
+            <div
+                style="margin-top:14px;font-size:13px"
+            >
                 Pedido rápido pelo WhatsApp
             </div>
+
         </div>
 
+
     </div>
+
 </header>
 
+
+
 <div class="searchbar">
+
     <div class="container">
 
+
         <div class="search">
+
+
             <input
                 id="search"
                 placeholder="🔎 Buscar no cardápio..."
             >
+
 
             <button
                 class="badge"
@@ -80,9 +147,15 @@
             >
                 🛒 Carrinho
             </button>
+
+
         </div>
 
+
+
         <div class="tabs">
+
+
             <button
                 class="active"
                 onclick="filterCat('all',this)"
@@ -90,52 +163,102 @@
                 Todos
             </button>
 
-            <button onclick="filterCat('pastel',this)">
+
+            <button
+                onclick="filterCat('pastel',this)"
+            >
                 Pastéis
             </button>
 
-            <button onclick="filterCat('lanche',this)">
+
+            <button
+                onclick="filterCat('lanche',this)"
+            >
                 Lanches
             </button>
 
-            <button onclick="filterCat('porcao',this)">
+
+            <button
+                onclick="filterCat('porcao',this)"
+            >
                 Porções
             </button>
 
-            <button onclick="filterCat('bebida',this)">
+
+            <button
+                onclick="filterCat('bebida',this)"
+            >
                 Bebidas
             </button>
+
+
         </div>
 
+
     </div>
+
 </div>
+
+
 
 <main class="container">
 
+
     <section class="section">
 
-        <h2>🔥 Mais pedidos</h2>
+
+        <h2>
+            🔥 Mais pedidos
+        </h2>
+
 
         <p class="section-sub">
             Os favoritos da casa
         </p>
 
-        <div class="grid" id="grid"></div>
+
+        <div
+            class="grid"
+            id="grid"
+        ></div>
+
 
     </section>
 
+
 </main>
 
-<div class="cart" id="cart">
 
-    <h3>Seu pedido</h3>
 
-    <div class="cart-items" id="cartItems"></div>
+<div
+    class="cart"
+    id="cart"
+>
+
+
+    <h3>
+        Seu pedido
+    </h3>
+
+
+    <div
+        class="cart-items"
+        id="cartItems"
+    ></div>
+
 
     <div class="cart-total">
-        <span>Total</span>
-        <span id="total">R$ 0,00</span>
+
+        <span>
+            Total
+        </span>
+
+        <span id="total">
+            R$ 0,00
+        </span>
+
     </div>
+
 
     <button
         class="checkout"
@@ -144,42 +267,62 @@
         Enviar pedido pelo WhatsApp
     </button>
 
+
 </div>
+
+
 
 <a
     class="wa"
-    href="https://wa.me/5541984547718"
-    target="_blank"
+    href="#"
+    onclick="return false;"
 >
     💬 Pedir no WhatsApp
 </a>
 
+
+
 <footer class="footer">
+
 
     <div class="container footer-grid">
 
+
         <div>
+
             <strong>
-                Pastelaria Jacaré Linha Verde
+                Pastelaria Demo
             </strong>
 
             <br>
 
-            Rua Ipiranga, 960, Loja 36 —
-            Pinheirinho, Curitiba
+            Curitiba — Paraná
+
         </div>
 
+
+
         <div>
-            📱 (41) 98454-7718
+
+            📱 WhatsApp
+
             <br>
+
             ⭐ 4,9/5 • 118 avaliações
+
         </div>
+
 
     </div>
 
+
 </footer>
+
+
 
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
