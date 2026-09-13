@@ -1,642 +1,662 @@
-// ===============================
-// IG SITES - PASTELARIA DEMO
-// Produtos + imagens + carrinho
-// ===============================
-
-
-// ===============================
-// WHATSAPP DA IG SITES
-// ===============================
+// IG SITES — PASTELARIA DEMO
 
 const WHATSAPP_NUMBER = '5541995229213';
 
+const WHATSAPP_MESSAGE =
+  'Olá! Vi este site demonstrativo e quero um site como este.';
 
-// ===============================
-// PRODUTOS
-// ===============================
 
 const products = [
 
-    // PASTÉIS
+  {
+    id: 1,
+    name: 'Pastel de Carne',
+    category: 'Pastéis',
+    price: 12.00,
+    emoji: '🥟',
+    description: 'Pastel crocante com recheio de carne temperada.'
+  },
 
-    ['pastel', 'Pastel de Carne',
-        'Carne temperada, cebola e azeitona.', 12.9, '🥩'],
+  {
+    id: 2,
+    name: 'Pastel de Queijo',
+    category: 'Pastéis',
+    price: 11.00,
+    emoji: '🧀',
+    description: 'Queijo derretido em uma massa crocante.'
+  },
 
-    ['pastel', 'Pastel de Queijo',
-        'Queijo muçarela derretido e orégano.', 11.9, '🧀'],
+  {
+    id: 3,
+    name: 'Pastel de Frango',
+    category: 'Pastéis',
+    price: 12.00,
+    emoji: '🍗',
+    description: 'Frango temperado com recheio cremoso.'
+  },
 
-    ['pastel', 'Pastel de Frango com Catupiry',
-        'Frango desfiado, catupiry e temperos.', 13.9, '🍗'],
+  {
+    id: 4,
+    name: 'Pastel de Pizza',
+    category: 'Pastéis',
+    price: 13.00,
+    emoji: '🍕',
+    description: 'Presunto, queijo, tomate e orégano.'
+  },
 
-    ['pastel', 'Pastel de Pizza',
-        'Muçarela, presunto, tomate e orégano.', 13.5, '🍕'],
+  {
+    id: 5,
+    name: 'Pastel Especial',
+    category: 'Pastéis',
+    price: 15.00,
+    emoji: '🥟',
+    description: 'Uma combinação especial de sabores.'
+  },
 
-    ['pastel', 'Pastel de Calabresa',
-        'Calabresa, muçarela e cebola.', 13.9, '🌭'],
+  {
+    id: 6,
+    name: 'X-Burger',
+    category: 'Lanches',
+    price: 18.00,
+    emoji: '🍔',
+    description: 'Hambúrguer, queijo, salada e molho especial.'
+  },
 
-    ['pastel', 'Pastel de Carne com Queijo',
-        'Carne temperada e muçarela.', 14.5, '🥩'],
+  {
+    id: 7,
+    name: 'X-Salada',
+    category: 'Lanches',
+    price: 19.00,
+    emoji: '🍔',
+    description: 'Hambúrguer, queijo, alface, tomate e molho.'
+  },
 
-    ['pastel', 'Pastel de Palmito',
-        'Palmito cremoso, milho e ervas.', 13.5, '🌽'],
+  {
+    id: 8,
+    name: 'X-Bacon',
+    category: 'Lanches',
+    price: 22.00,
+    emoji: '🥓',
+    description: 'Hambúrguer, queijo, bacon crocante e molho.'
+  },
 
-    ['pastel', 'Pastel de Bacon com Queijo',
-        'Bacon crocante e muçarela.', 14.9, '🥓'],
+  {
+    id: 9,
+    name: 'Batata Frita',
+    category: 'Porções',
+    price: 14.00,
+    emoji: '🍟',
+    description: 'Porção de batatas crocantes.'
+  },
 
-    ['pastel', 'Pastel de Chocolate',
-        'Chocolate cremoso e açúcar.', 12.5, '🍫'],
+  {
+    id: 10,
+    name: 'Batata com Cheddar',
+    category: 'Porções',
+    price: 20.00,
+    emoji: '🍟',
+    description: 'Batata frita com cheddar cremoso.'
+  },
 
-    ['pastel', 'Pastel Romeu e Julieta',
-        'Goiabada cremosa e queijo.', 12.5, '🍓'],
+  {
+    id: 11,
+    name: 'Nuggets',
+    category: 'Porções',
+    price: 16.00,
+    emoji: '🍗',
+    description: 'Nuggets crocantes para compartilhar.'
+  },
 
+  {
+    id: 12,
+    name: 'Refrigerante Lata',
+    category: 'Bebidas',
+    price: 6.00,
+    emoji: '🥤',
+    description: 'Lata gelada de refrigerante.'
+  },
 
-    // LANCHES
+  {
+    id: 13,
+    name: 'Suco Natural',
+    category: 'Bebidas',
+    price: 8.00,
+    emoji: '🧃',
+    description: 'Suco natural preparado na hora.'
+  },
 
-    ['lanche', 'X-Burger',
-        'Hambúrguer, queijo, alface, tomate e molho especial.', 18.9, '🍔'],
+  {
+    id: 14,
+    name: 'Água',
+    category: 'Bebidas',
+    price: 4.00,
+    emoji: '💧',
+    description: 'Água mineral gelada.'
+  },
 
-    ['lanche', 'X-Salada',
-        'Hambúrguer, queijo, alface, tomate e maionese.', 20.9, '🍔'],
+  {
+    id: 15,
+    name: 'Milk-shake',
+    category: 'Bebidas',
+    price: 14.00,
+    emoji: '🥤',
+    description: 'Milk-shake cremoso em sabores variados.'
+  },
 
-    ['lanche', 'X-Bacon',
-        'Hambúrguer, queijo, bacon e molho da casa.', 23.9, '🥓'],
+  {
+    id: 16,
+    name: 'Açaí',
+    category: 'Sobremesas',
+    price: 16.00,
+    emoji: '🍓',
+    description: 'Açaí cremoso com complementos.'
+  },
 
-    ['lanche', 'X-Frango',
-        'Frango grelhado, queijo, alface e maionese.', 21.9, '🍗'],
+  {
+    id: 17,
+    name: 'Pudim',
+    category: 'Sobremesas',
+    price: 9.00,
+    emoji: '🍮',
+    description: 'Pudim cremoso com calda de caramelo.'
+  },
 
-    ['lanche', 'Misto Quente',
-        'Presunto e queijo na chapa.', 12.9, '🥪'],
-
-
-    // PORÇÕES
-
-    ['porcao', 'Batata Frita P',
-        'Batata crocante com molho especial.', 15.9, '🍟'],
-
-    ['porcao', 'Batata com Cheddar e Bacon',
-        'Batata frita, cheddar cremoso e bacon.', 24.9, '🍟'],
-
-    ['porcao', 'Nuggets',
-        '10 unidades crocantes com molho.', 19.9, '🍗'],
-
-    ['porcao', 'Calabresa Acebolada',
-        'Calabresa na chapa com cebola.', 25.9, '🌭'],
-
-    ['porcao', 'Anéis de Cebola',
-        'Porção crocante com molho da casa.', 18.9, '🧅'],
-
-
-    // BEBIDAS
-
-    ['bebida', 'Coca-Cola Lata 350ml',
-        'Refrigerante gelado.', 6.0, '🥤'],
-
-    ['bebida', 'Coca-Cola Zero 350ml',
-        'Refrigerante gelado sem açúcar.', 6.0, '🥤'],
-
-    ['bebida', 'Guaraná Antarctica 350ml',
-        'Refrigerante gelado.', 6.0, '🥤'],
-
-    ['bebida', 'Fanta Laranja 350ml',
-        'Refrigerante gelado.', 6.0, '🥤'],
-
-    ['bebida', 'Sprite 350ml',
-        'Refrigerante gelado.', 6.0, '🥤'],
-
-    ['bebida', 'Água Mineral 500ml',
-        'Com ou sem gás.', 4.0, '💧'],
-
-    ['bebida', 'Suco de Laranja 300ml',
-        'Suco natural preparado na hora.', 8.5, '🍊'],
-
-    ['bebida', 'Suco de Maracujá 300ml',
-        'Suco natural e refrescante.', 8.5, '🥭'],
-
-    ['bebida', 'H2OH! Limão 500ml',
-        'Bebida leve e refrescante.', 7.0, '🍋'],
-
-    ['bebida', 'Chá Gelado 300ml',
-        'Chá gelado com limão.', 7.5, '🧊']
+  {
+    id: 18,
+    name: 'Brownie',
+    category: 'Sobremesas',
+    price: 10.00,
+    emoji: '🍫',
+    description: 'Brownie macio e chocolatudo.'
+  }
 
 ];
 
 
-// ===============================
-// GERADOR DE IMAGENS
-// ===============================
-
-function createImage(emoji, name) {
-
-    const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg"
-         width="600"
-         height="420"
-         viewBox="0 0 600 420">
-
-        <defs>
-
-            <linearGradient
-                id="bg"
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="1"
-            >
-
-                <stop
-                    offset="0%"
-                    stop-color="#fff4d6"
-                />
-
-                <stop
-                    offset="100%"
-                    stop-color="#f3c56b"
-                />
-
-            </linearGradient>
-
-        </defs>
-
-
-        <rect
-            width="600"
-            height="420"
-            fill="url(#bg)"
-        />
-
-
-        <circle
-            cx="300"
-            cy="180"
-            r="145"
-            fill="#ffffff"
-            opacity=".45"
-        />
-
-
-        <text
-            x="300"
-            y="220"
-            text-anchor="middle"
-            font-size="110"
-        >
-            ${emoji}
-        </text>
-
-
-        <rect
-            x="28"
-            y="335"
-            width="544"
-            height="54"
-            rx="27"
-            fill="#211d19"
-            opacity=".9"
-        />
-
-
-        <text
-            x="300"
-            y="370"
-            text-anchor="middle"
-            fill="#ffffff"
-            font-size="21"
-            font-weight="700"
-            font-family="Arial, sans-serif"
-        >
-            ${name}
-        </text>
-
-    </svg>
-    `;
-
-
-    return 'data:image/svg+xml;charset=UTF-8,' +
-        encodeURIComponent(svg);
-
-}
-
-
-// ===============================
-// CRIAR IMAGENS
-// ===============================
-
-const img = products.map(product => {
-
-    return createImage(
-        product[4],
-        product[1]
-    );
-
-});
-
-
-// ===============================
-// CARRINHO
-// ===============================
-
 let cart = [];
-let cat = 'all';
+
+let selectedCategory = 'Todos';
 
 
-// ===============================
-// FORMATAÇÃO DE PREÇO
-// ===============================
+const productsContainer =
+  document.getElementById('products');
 
-function money(value) {
+const categoriesContainer =
+  document.getElementById('categories');
 
-    return value.toLocaleString(
-        'pt-BR',
-        {
-            style: 'currency',
-            currency: 'BRL'
+const cartElement =
+  document.getElementById('cart');
+
+const cartOverlay =
+  document.getElementById('cartOverlay');
+
+const cartItemsContainer =
+  document.getElementById('cartItems');
+
+const cartTotal =
+  document.getElementById('cartTotal');
+
+const cartCount =
+  document.getElementById('cartCount');
+
+
+function formatPrice(value) {
+
+  return value.toLocaleString(
+    'pt-BR',
+    {
+      style: 'currency',
+      currency: 'BRL'
+    }
+  );
+
+}
+
+
+function whatsappUrl(
+  message = WHATSAPP_MESSAGE
+) {
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+}
+
+
+function renderCategories() {
+
+  const categories = [
+    'Todos',
+    ...new Set(
+      products.map(
+        product => product.category
+      )
+    )
+  ];
+
+
+  categoriesContainer.innerHTML =
+    categories.map(category => `
+
+      <button
+        class="category ${category === selectedCategory ? 'active' : ''}"
+        data-category="${category}"
+      >
+        ${category}
+      </button>
+
+    `).join('');
+
+
+  categoriesContainer
+    .querySelectorAll('.category')
+    .forEach(button => {
+
+      button.addEventListener(
+        'click',
+        () => {
+
+          selectedCategory =
+            button.dataset.category;
+
+          renderCategories();
+
+          renderProducts();
+
         }
-    );
+      );
+
+    });
 
 }
 
 
-// ===============================
-// MOSTRAR PRODUTOS
-// ===============================
-
-function render() {
-
-    const searchInput =
-        document.getElementById('search');
-
-
-    const q = searchInput
-        ? searchInput.value.toLowerCase()
-        : '';
-
-
-    const list = products
-        .map((product, index) => ({
-            product,
-            index
-        }))
-
-        .filter(item => {
-
-            const categoryOK =
-                cat === 'all' ||
-                item.product[0] === cat;
-
-
-            const searchOK =
-                item.product[1]
-                    .toLowerCase()
-                    .includes(q) ||
-
-                item.product[2]
-                    .toLowerCase()
-                    .includes(q);
-
-
-            return categoryOK && searchOK;
-
-        });
-
-
-    const grid =
-        document.getElementById('grid');
-
-
-    if (!list.length) {
-
-        grid.innerHTML = `
-
-            <div
-                style="
-                    grid-column:1/-1;
-                    text-align:center;
-                    padding:40px;
-                    color:#777;
-                "
-            >
-
-                <div style="font-size:40px;">
-                    🔎
-                </div>
-
-                <h3>
-                    Nenhum produto encontrado
-                </h3>
-
-                <p>
-                    Tente buscar outro produto.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-
-    grid.innerHTML = list
-        .map(item => {
-
-            const p = item.product;
-            const i = item.index;
-
-
-            return `
-
-                <article class="card">
-
-                    <img
-                        src="${img[i]}"
-                        alt="${p[1]}"
-                    >
-
-
-                    <div class="card-body">
-
-                        <h3>
-                            ${p[1]}
-                        </h3>
-
-
-                        <div class="desc">
-                            ${p[2]}
-                        </div>
-
-
-                        <div class="price">
-                            ${money(p[3])}
-                        </div>
-
-
-                        <button
-                            class="add"
-                            onclick="add(${i})"
-                        >
-                            + Adicionar
-                        </button>
-
-                    </div>
-
-                </article>
-
-            `;
-
-        })
-        .join('');
-
-}
-
-
-// ===============================
-// ADICIONAR AO CARRINHO
-// ===============================
-
-function add(index) {
-
-    cart.push(
-        products[index]
-    );
-
-
-    updateCart();
-
-
-    document
-        .getElementById('cart')
-        .classList
-        .add('show');
-
-}
-
-
-// ===============================
-// ATUALIZAR CARRINHO
-// ===============================
-
-function updateCart() {
-
-    const count =
-        document.getElementById('count');
-
-
-    const cartItems =
-        document.getElementById('cartItems');
-
-
-    const total =
-        document.getElementById('total');
-
-
-    count.textContent =
-        cart.length;
-
-
-    if (!cart.length) {
-
-        cartItems.innerHTML = `
-
-            <div
-                style="
-                    color:#777;
-                    font-size:13px;
-                "
-            >
-                Seu carrinho está vazio.
-            </div>
-
-        `;
-
-    } else {
-
-        cartItems.innerHTML =
-            cart
-                .map(product => {
-
-                    return `
-
-                        <div class="cart-row">
-
-                            <span>
-                                ${product[1]}
-                            </span>
-
-                            <b>
-                                ${money(product[3])}
-                            </b>
-
-                        </div>
-
-                    `;
-
-                })
-                .join('');
-
-    }
-
-
-    const totalValue =
-        cart.reduce(
-            (sum, product) =>
-                sum + product[3],
-            0
+function renderProducts() {
+
+  const filteredProducts =
+    selectedCategory === 'Todos'
+      ? products
+      : products.filter(
+          product =>
+            product.category === selectedCategory
         );
 
 
-    total.textContent =
-        money(totalValue);
+  productsContainer.innerHTML =
+    filteredProducts.map(product => `
+
+      <article class="product-card">
+
+        <div
+          class="product-image"
+          aria-hidden="true"
+        >
+          ${product.emoji}
+        </div>
+
+
+        <div class="product-info">
+
+          <span class="product-category">
+            ${product.category}
+          </span>
+
+          <h3>
+            ${product.name}
+          </h3>
+
+          <p>
+            ${product.description}
+          </p>
+
+
+          <div class="product-bottom">
+
+            <strong>
+              ${formatPrice(product.price)}
+            </strong>
+
+            <button
+              class="add-product"
+              data-id="${product.id}"
+            >
+              Adicionar
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    `).join('');
+
+
+  productsContainer
+    .querySelectorAll('.add-product')
+    .forEach(button => {
+
+      button.addEventListener(
+        'click',
+        () => {
+
+          addToCart(
+            Number(button.dataset.id)
+          );
+
+        }
+      );
+
+    });
 
 }
 
 
-// ===============================
-// ABRIR / FECHAR CARRINHO
-// ===============================
+function addToCart(productId) {
 
-function toggleCart() {
-
-    document
-        .getElementById('cart')
-        .classList
-        .toggle('show');
-
-}
-
-
-// ===============================
-// FILTRO DE CATEGORIA
-// ===============================
-
-function filterCat(
-    category,
-    button
-) {
-
-    cat = category;
-
-
-    document
-        .querySelectorAll('.tabs button')
-        .forEach(btn => {
-
-            btn.classList.remove(
-                'active'
-            );
-
-        });
-
-
-    button.classList.add(
-        'active'
+  const existing =
+    cart.find(
+      item => item.id === productId
     );
 
 
-    render();
+  if (existing) {
+
+    existing.quantity += 1;
+
+  } else {
+
+    const product =
+      products.find(
+        item => item.id === productId
+      );
+
+
+    if (!product) return;
+
+
+    cart.push({
+      ...product,
+      quantity: 1
+    });
+
+  }
+
+
+  renderCart();
+
+  openCart();
 
 }
 
 
-// ===============================
-// FINALIZAR / FALAR COM IG SITES
-// ===============================
+function updateQuantity(
+  productId,
+  change
+) {
+
+  const item =
+    cart.find(
+      product => product.id === productId
+    );
+
+
+  if (!item) return;
+
+
+  item.quantity += change;
+
+
+  if (item.quantity <= 0) {
+
+    cart =
+      cart.filter(
+        product => product.id !== productId
+      );
+
+  }
+
+
+  renderCart();
+
+}
+
+
+function getCartTotal() {
+
+  return cart.reduce(
+    (total, item) =>
+      total +
+      item.price * item.quantity,
+    0
+  );
+
+}
+
+
+function getCartCount() {
+
+  return cart.reduce(
+    (total, item) =>
+      total + item.quantity,
+    0
+  );
+
+}
+
+
+function renderCart() {
+
+  const count =
+    getCartCount();
+
+
+  cartCount.textContent =
+    count;
+
+
+  cartTotal.textContent =
+    formatPrice(
+      getCartTotal()
+    );
+
+
+  if (!cart.length) {
+
+    cartItemsContainer.innerHTML = `
+
+      <div class="empty-cart">
+
+        <div>🛒</div>
+
+        <p>
+          Seu carrinho está vazio.
+        </p>
+
+        <span>
+          Adicione alguns produtos para testar o site.
+        </span>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  cartItemsContainer.innerHTML =
+    cart.map(item => `
+
+      <div class="cart-item">
+
+        <div class="cart-item-icon">
+          ${item.emoji}
+        </div>
+
+
+        <div class="cart-item-info">
+
+          <strong>
+            ${item.name}
+          </strong>
+
+          <span>
+            ${formatPrice(item.price)}
+          </span>
+
+
+          <div class="quantity">
+
+            <button
+              data-action="decrease"
+              data-id="${item.id}"
+              aria-label="Diminuir quantidade"
+            >
+              −
+            </button>
+
+            <b>
+              ${item.quantity}
+            </b>
+
+            <button
+              data-action="increase"
+              data-id="${item.id}"
+              aria-label="Aumentar quantidade"
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <strong>
+          ${formatPrice(
+            item.price *
+            item.quantity
+          )}
+        </strong>
+
+      </div>
+
+    `).join('');
+
+
+  cartItemsContainer
+    .querySelectorAll('[data-action]')
+    .forEach(button => {
+
+      button.addEventListener(
+        'click',
+        () => {
+
+          const id =
+            Number(
+              button.dataset.id
+            );
+
+
+          const change =
+            button.dataset.action === 'increase'
+              ? 1
+              : -1;
+
+
+          updateQuantity(
+            id,
+            change
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+function openCart() {
+
+  cartElement.classList.add('open');
+
+  cartOverlay.classList.add('active');
+
+}
+
+
+function closeCart() {
+
+  cartElement.classList.remove('open');
+
+  cartOverlay.classList.remove('active');
+
+}
+
 
 function checkout() {
 
-    if (!cart.length) {
-
-        const message =
-            `Olá! Vi o site demonstrativo da IG Sites e gostaria de saber mais sobre a criação de um site para minha empresa.
-
-IG Sites
-UM SITE COM A CARA DO SEU NEGÓCIO`;
+  let message =
+    WHATSAPP_MESSAGE;
 
 
-        const whatsapp =
-            'https://wa.me/' +
-            WHATSAPP_NUMBER +
-            '?text=' +
-            encodeURIComponent(message);
-
-
-        window.open(
-            whatsapp,
-            '_blank'
-        );
-
-
-        return;
-    }
-
+  if (cart.length) {
 
     const items =
-        cart
-            .map(product => {
-
-                return `• ${product[1]} — ${money(product[3])}`;
-
-            })
-            .join('\n');
+      cart.map(item =>
+        `• ${item.quantity}x ${item.name} — ${formatPrice(item.price * item.quantity)}`
+      ).join('\n');
 
 
-    const total =
-        cart.reduce(
-            (sum, product) =>
-                sum + product[3],
-            0
-        );
+    message +=
+      `\n\nItens selecionados no site demonstrativo:\n${items}\n\nTotal demonstrativo: ${formatPrice(getCartTotal())}`;
+
+  }
 
 
-    const message =
-        `Olá! Vi o site demonstrativo da IG Sites e gostaria de saber mais sobre a criação de um site para minha empresa.
-
-Produtos selecionados no exemplo:
-
-${items}
-
-Total demonstrativo: ${money(total)}
-
-IG Sites
-UM SITE COM A CARA DO SEU NEGÓCIO`;
-
-
-    const whatsapp =
-        'https://wa.me/' +
-        WHATSAPP_NUMBER +
-        '?text=' +
-        encodeURIComponent(message);
-
-
-    window.open(
-        whatsapp,
-        '_blank'
-    );
+  window.open(
+    whatsappUrl(message),
+    '_blank',
+    'noopener,noreferrer'
+  );
 
 }
 
 
-// ===============================
-// BUSCA
-// ===============================
-
-const search =
-    document.getElementById('search');
-
-
-if (search) {
-
-    search.addEventListener(
-        'input',
-        render
-    );
-
-}
+document
+  .getElementById('openCart')
+  .addEventListener(
+    'click',
+    openCart
+  );
 
 
-// ===============================
-// INICIALIZAÇÃO
-// ===============================
+document
+  .getElementById('closeCart')
+  .addEventListener(
+    'click',
+    closeCart
+  );
 
-render();
 
-updateCart();
+cartOverlay.addEventListener(
+  'click',
+  closeCart
+);
+
+
+document
+  .getElementById('checkout')
+  .addEventListener(
+    'click',
+    checkout
+  );
+
+
+renderCategories();
+
+renderProducts();
+
+renderCart();
